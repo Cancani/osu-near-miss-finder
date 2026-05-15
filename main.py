@@ -1,5 +1,5 @@
 """
-osu! Near-Miss Finder - FastAPI backend.
+osu! Near-Miss Finder. FastAPI backend.
 
 Fetches a user's top plays from the osu! API v2 and surfaces the ones that
 ended with only a handful of misses (the "almost FC'd" plays).

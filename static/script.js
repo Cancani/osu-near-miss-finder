@@ -1,4 +1,4 @@
-// osu! Near-Miss Finder - frontend logic
+// osu! Near-Miss Finder. Frontend logic.
 
 const form = document.getElementById("search-form");
 const statusEl = document.getElementById("status");
@@ -159,7 +159,7 @@ async function search(e) {
 
     if (data.scores.length === 0) {
       showStatus(
-        `Scanned ${data.query.scanned} ${data.query.score_type} plays - none in range ${data.query.min_misses}-${data.query.max_misses} misses. Try widening the range.`,
+        `Scanned ${data.query.scanned} ${data.query.score_type} plays, none in range ${data.query.min_misses}-${data.query.max_misses} misses. Try widening the range.`,
         "info"
       );
       return;

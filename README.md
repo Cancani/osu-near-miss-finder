@@ -4,24 +4,24 @@
 
 Scan an [osu!](https://osu.ppy.sh) username and the app pulls their top plays
 from the official API, then surfaces the ones that ended with just a handful of
-misses - the maps you should probably retry tonight.
+misses. These are the maps you should probably retry tonight.
 
 ![cool screenshot](./media/)
 
 ## Features
 
-- 🔎 Scan any public osu! profile by username
-- 🎯 Filter plays by miss-count range (`1-5` by default, configurable)
-- 🎮 All four modes: standard / taiko / catch / mania
-- 📋 Top plays, recent plays, #1 ranks, or pinned scores
-- 🎨 Dark, rhythm-game-inspired UI with beatmap covers and difficulty stars
-- ⚡ Pure FastAPI + vanilla JS - no build step
+-  Scan any public osu! profile by username
+-  Filter plays by miss-count range (`1-5` by default, configurable)
+-  All four modes: standard / taiko / catch / mania
+-  Top plays, recent plays, #1 ranks, or pinned scores
+-  Dark, rhythm-game-inspired UI with beatmap covers and difficulty stars
+-  Pure FastAPI + vanilla JS no build step
 
 ## How it works
 
 The app authenticates against the osu! API v2 using the
 [`client_credentials`](https://osu.ppy.sh/docs/index.html#client-credentials-grant)
-flow (no user login required - only public data is read), fetches a user's top
+flow (no user login required, since only public data is read), fetches a user's top
 plays, and filters them by the `count_miss` statistic.
 
 > **Note:** The osu! API does not expose a "list every play ever made" endpoint.
@@ -37,7 +37,7 @@ plays, and filters them by the `count_miss` statistic.
 1. Log in to [osu.ppy.sh](https://osu.ppy.sh) and go to
    **Settings → OAuth → New OAuth Application**.
 2. Pick any application name (e.g. `near-miss-finder`).
-3. Callback URL can be anything - e.g. `http://localhost:8000`.
+3. Callback URL can be anything, e.g. `http://localhost:8000`.
    The `client_credentials` flow does not redirect anywhere.
 4. Copy the **Client ID** and **Client Secret**.
 
@@ -49,7 +49,7 @@ cd osu-near-miss-finder
 
 python -m venv .venv
 
-# Activate the venv - pick the line for your shell:
+# Activate the venv. Pick the line for your shell:
 source .venv/bin/activate          # macOS / Linux
 source .venv/Scripts/activate      # Windows (Git Bash / MINGW64)
 .venv\Scripts\activate             # Windows (PowerShell / cmd)
@@ -133,6 +133,6 @@ osu-near-miss-finder/
 
 ## License
 
-MIT - see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
 
 Not affiliated with osu! or ppy Pty Ltd.
