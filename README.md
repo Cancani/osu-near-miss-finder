@@ -4,23 +4,24 @@
 
 Scan an [osu!](https://osu.ppy.sh) username and the app pulls their top plays
 from the official API, then surfaces the ones that ended with just a handful of
-misses, the maps you should probably retry tonight.
+misses - the maps you should probably retry tonight.
 
+![screenshot placeholder](docs/screenshot.png)
 
 ## Features
 
-- Scan any public osu! profile by username
-- Filter plays by miss-count range (`1–5` by default, configurable)
-- All four modes: standard / taiko / catch / mania
-- Top plays, recent plays, #1 ranks, or pinned scores
-- Dark, rhythm-game-inspired UI with beatmap covers and difficulty stars
-- Pure FastAPI + vanilla JS 
+- 🔎 Scan any public osu! profile by username
+- 🎯 Filter plays by miss-count range (`1-5` by default, configurable)
+- 🎮 All four modes: standard / taiko / catch / mania
+- 📋 Top plays, recent plays, #1 ranks, or pinned scores
+- 🎨 Dark, rhythm-game-inspired UI with beatmap covers and difficulty stars
+- ⚡ Pure FastAPI + vanilla JS - no build step
 
 ## How it works
 
 The app authenticates against the osu! API v2 using the
 [`client_credentials`](https://osu.ppy.sh/docs/index.html#client-credentials-grant)
-flow (no user login required), fetches a user's top
+flow (no user login required - only public data is read), fetches a user's top
 plays, and filters them by the `count_miss` statistic.
 
 > **Note:** The osu! API does not expose a "list every play ever made" endpoint.
@@ -36,7 +37,7 @@ plays, and filters them by the `count_miss` statistic.
 1. Log in to [osu.ppy.sh](https://osu.ppy.sh) and go to
    **Settings → OAuth → New OAuth Application**.
 2. Pick any application name (e.g. `near-miss-finder`).
-3. Callback URL can be anything e.g. `http://localhost:8000`.
+3. Callback URL can be anything - e.g. `http://localhost:8000`.
    The `client_credentials` flow does not redirect anywhere.
 4. Copy the **Client ID** and **Client Secret**.
 
@@ -47,10 +48,19 @@ git clone https://github.com/YOUR_USERNAME/osu-near-miss-finder.git
 cd osu-near-miss-finder
 
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
+
+# Activate the venv - pick the line for your shell:
+source .venv/bin/activate          # macOS / Linux
+source .venv/Scripts/activate      # Windows (Git Bash / MINGW64)
+.venv\Scripts\activate             # Windows (PowerShell / cmd)
 
 pip install -r requirements.txt
 ```
+
+> **Heads-up for Windows users:** Python's `venv` creates a `Scripts/` folder
+> on Windows instead of `bin/`, even when you're using Git Bash. If you see
+> `bash: .venv/bin/activate: No such file or directory`, use
+> `source .venv/Scripts/activate` instead.
 
 ### 3. Configure
 
@@ -83,7 +93,7 @@ Query parameters:
 | `score_type`  | `best`  | `best`, `recent`, `firsts`, `pinned`                |
 | `min_misses`  | `1`     | Inclusive lower bound on misses                     |
 | `max_misses`  | `5`     | Inclusive upper bound on misses                     |
-| `limit`       | `100`   | How many plays to scan (1–200, paginated)           |
+| `limit`       | `100`   | How many plays to scan (1-200, paginated)           |
 | `include_fc`  | `false` | If true, includes 0-miss plays regardless of `min`  |
 
 Example:
@@ -123,6 +133,6 @@ osu-near-miss-finder/
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
 
 Not affiliated with osu! or ppy Pty Ltd.

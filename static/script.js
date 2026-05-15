@@ -1,4 +1,4 @@
-// osu! Near-Miss Finder — frontend logic
+// osu! Near-Miss Finder - frontend logic
 
 const form = document.getElementById("search-form");
 const statusEl = document.getElementById("status");
@@ -42,12 +42,12 @@ function showStatus(msg, kind = "loading") {
 function hideStatus() { statusEl.classList.add("hidden"); }
 
 function formatNum(n) {
-  if (n == null) return "—";
+  if (n == null) return "-";
   return new Intl.NumberFormat("en-US").format(n);
 }
 
 function formatPP(pp) {
-  if (pp == null) return "—";
+  if (pp == null) return "-";
   return `${Math.round(pp)}pp`;
 }
 
@@ -96,7 +96,7 @@ function renderScore(score) {
     if (el) el.textContent = value;
   };
 
-  setStat(".stat-stars", bmap.difficulty_rating ? bmap.difficulty_rating.toFixed(2) : "—");
+  setStat(".stat-stars", bmap.difficulty_rating ? bmap.difficulty_rating.toFixed(2) : "-");
   setStat(".stat-acc", `${score.accuracy.toFixed(2)}%`);
 
   const comboStr = bmap.max_combo
@@ -108,7 +108,7 @@ function renderScore(score) {
 
   const rankEl = node.querySelector(".stat-rank .stat-value");
   if (rankEl) {
-    rankEl.textContent = score.rank || "—";
+    rankEl.textContent = score.rank || "-";
     rankEl.style.color = RANK_COLORS[score.rank] || "var(--text)";
     rankEl.style.fontWeight = "700";
   }
@@ -159,7 +159,7 @@ async function search(e) {
 
     if (data.scores.length === 0) {
       showStatus(
-        `Scanned ${data.query.scanned} ${data.query.score_type} plays — none in range ${data.query.min_misses}–${data.query.max_misses} misses. Try widening the range.`,
+        `Scanned ${data.query.scanned} ${data.query.score_type} plays - none in range ${data.query.min_misses}-${data.query.max_misses} misses. Try widening the range.`,
         "info"
       );
       return;
