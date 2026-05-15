@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>osu! Near-Miss Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-text">near-miss<span class="brand-accent">.finder</span></span>
+      </div>
+      <h1 class="title">
+        find the maps<br/>
+        <span class="title-accent">you almost FC'd.</span>
+      </h1>
+      <p class="subtitle">
+        Scan an osu! username and surface the top plays that ended with just a handful
+        of misses — the ones you should probably retry tonight.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="search-card">
+      <form id="search-form" class="search-form">
+        <div class="input-row">
+          <label class="field field-main">
+            <span class="field-label">username</span>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="e.g. mrekk"
+              autocomplete="off"
+              required
+            />
+          </label>
+
+          <button type="submit" class="search-btn">
+            <span class="btn-text">scan</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+
+        <div class="filter-row">
+          <label class="field">
+            <span class="field-label">mode</span>
+            <select id="mode" name="mode">
+              <option value="osu" selected>standard</option>
+              <option value="taiko">taiko</option>
+              <option value="fruits">catch</option>
+              <option value="mania">mania</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field-label">score list</span>
+            <select id="score_type" name="score_type">
+              <option value="best" selected>best (top plays)</option>
+              <option value="recent">recent (last 24h)</option>
+              <option value="firsts">#1 ranks</option>
+              <option value="pinned">pinned</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field-label">min misses</span>
+            <input id="min_misses" name="min_misses" type="number" value="1" min="0" max="999" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">max misses</span>
+            <input id="max_misses" name="max_misses" type="number" value="5" min="0" max="999" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">limit</span>
+            <input id="limit" name="limit" type="number" value="100" min="1" max="200" />
+          </label>
+        </div>
+      </form>
+    </section>
+
+    <section id="status" class="status hidden"></section>
+
+    <section id="user-card" class="user-card hidden">
+      <img id="user-avatar" class="user-avatar" alt="" />
+      <div class="user-meta">
+        <div class="user-name" id="user-name"></div>
+        <div class="user-stats" id="user-stats"></div>
+      </div>
+      <div class="result-count" id="result-count"></div>
+    </section>
+
+    <section id="results" class="results"></section>
+
+    <template id="score-template">
+      <article class="score-card">
+        <a class="score-cover" target="_blank" rel="noopener">
+          <img alt="" loading="lazy" />
+          <span class="miss-badge"></span>
+        </a>
+        <div class="score-body">
+          <div class="score-title"></div>
+          <div class="score-artist"></div>
+          <div class="score-version"></div>
+          <div class="score-stats">
+            <span class="stat stat-stars"><span class="stat-label">★</span><span class="stat-value"></span></span>
+            <span class="stat stat-acc"><span class="stat-label">acc</span><span class="stat-value"></span></span>
+            <span class="stat stat-combo"><span class="stat-label">combo</span><span class="stat-value"></span></span>
+            <span class="stat stat-pp"><span class="stat-label">pp</span><span class="stat-value"></span></span>
+            <span class="stat stat-rank"><span class="stat-label">rank</span><span class="stat-value"></span></span>
+          </div>
+          <div class="score-mods"></div>
+        </div>
+      </article>
+    </template>
+  </main>
+
+  <footer class="footer">
+    <span>not affiliated with osu! / ppy pty ltd</span>
+    <span class="footer-dot">·</span>
+    <a href="https://github.com" target="_blank" rel="noopener">source on github</a>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
