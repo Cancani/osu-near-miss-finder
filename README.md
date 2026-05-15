@@ -6,7 +6,7 @@ Scan an [osu!](https://osu.ppy.sh) username and the app pulls their top plays
 from the official API, then surfaces the ones that ended with just a handful of
 misses. These are the maps you should probably retry tonight.
 
-![cool screenshot](./media/)
+![cool screenshot](./media/cool%20screenshot.png)
 
 ## Features
 
