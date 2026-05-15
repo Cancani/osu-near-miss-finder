@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# then edit .env and paste your client id + secret
+# then edit .env and paste your client id + secret as shown in the .env.example file
 ```
 
 ### 4. Run
