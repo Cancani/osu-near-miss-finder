@@ -133,6 +133,6 @@ osu-near-miss-finder/
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+![License: MIT](https://img.shields.io/badge/License-MIT-ff66ab.svg)
 
 Not affiliated with osu! or ppy Pty Ltd.
